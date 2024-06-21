@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+{% block content %}
+<h2>Confirmar Exclusão</h2>
+<p>Você está prestes a excluir a tarefa: {{ object.task_name }}.</p>
+
+<form method="post" action="{% url 'task_delete' pk=object.pk %}">
+  {% csrf_token %}
+  <button type="submit">Confirmar Exclusão</button>
+</form>
+
+<a href="{% url 'list_task' %}">Cancelar</a>
+{% endblock %}
+</body>
+</html>
